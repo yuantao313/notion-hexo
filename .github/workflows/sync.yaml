@@ -2,9 +2,11 @@ name: Sync Docs
 
 on:
   # 允许手动push触发
-#  push:
-#    branches:
-#      - master
+  push:
+    branches:
+      - master
+  schedule:
+    - cron: "*/30 * * * *"
   # 允许外部仓库事件触发
   repository_dispatch:
     types:
@@ -15,13 +17,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 检查分支
-        uses: actions/checkout@master
-
-      - name: 安装node环境
-        uses: actions/setup-node@master
+      - uses: actions/checkout@v2
+      - name: Use Node.js 19.x
+        uses: actions/setup-node@v2
         with:
-          node-version: "16.x"
+          node-version: "19"
+
+      - name: Cache NPM dependencies
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ runner.OS }}-npm-cache
+          restore-keys: |
+            ${{ runner.OS }}-npm-cache
 
       - name: 安装依赖
         run: |
@@ -35,18 +43,29 @@ jobs:
         run: |
           npm run sync
 
-      - name: 配置Git用户名邮箱
-        run: |
-          git config --global user.name "yuantao313"
-          git config --global user.email "yuantao313@outlook.com"
+      # - name: 配置Git用户名邮箱
+      #   run: |
+      #     git config --global user.name "yuantao313"
+      #     git config --global user.email "yuantao313@outlook.com"
 
-      - name: 提交拉取的文档到GitHub仓库
-        run: |
-          echo `date +"%Y-%m-%d %H:%M:%S"` begin > time.txt
-          git add .
-          git commit -m "Refresh elog.cache.json" -a
+      # - name: 提交拉取的文档到GitHub仓库
+      #   run: |
+      #     echo `date +"%Y-%m-%d %H:%M:%S"` begin > time.txt
+      #     git add .
+      #     git commit -m "Refresh elog.cache.json" -a
 
-      - name: 推送文档到仓库
-        uses: ad-m/github-push-action@master
+      # - name: 推送文档到仓库
+      #   uses: ad-m/github-push-action@master
+      #   with:
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build
+        run: npm run build
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          personal_token: ${{ secrets.GH_TOKEN }}
+          publish_dir: ./public
+          publish_branch: main
+          external_repository: yuantao313/yuantao313.github.io
