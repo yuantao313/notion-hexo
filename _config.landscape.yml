@@ -1,0 +1,69 @@
+# Header
+menu:
+  Home: /
+  Archives: /archives
+  Legacy: /legacy
+  About: /about
+banner: "https://2a.zol-img.com.cn/product/96_940x705/464/ceiIMbs92pg.jpg"
+
+# Content
+excerpt_link: Read More
+fancybox: true
+
+# # Footer
+# copyright: |-
+#   <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a></br>
+#   All website licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a></br>
+
+# Footer
+copyright:
+  # Need help choosing? Please see...
+  # https://creativecommons.org/choose/
+  # https://choosealicense.com/
+  # You can use html like below...
+  # copyright: |-
+  #   <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a></br>
+  #   All website licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a></br>
+  <div><a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br />本站作品采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可。</div>
+  <span>您可以复制、发行、展览、表演、放映、广播或通过信息网络传播本作品；您必须按照作者或者许可人指定的方式对作品进行署名；您可以自由复制、散布、展示及演出本作品；您不得为商业目的而使用本作品；您不得改变、转变或更改本作品。</span>
+
+# Sidebar
+sidebar: right
+widgets:
+  - category
+  - tag
+  - tagcloud
+  - archive
+  - recent_posts
+
+# display widgets at the bottom of index pages (pagination == 2)
+index_widgets:
+# - category
+# - tagcloud
+# - archive
+
+# Widget behavior
+archive_type: "monthly"
+show_count: false
+recent_posts_limits: 5
+
+# Miscellaneous
+google_analytics:
+gauges_analytics:
+favicon: /favicon.png
+twitter:
+fb_admins:
+fb_app_id:
+
+# valine comment system. https://valine.js.org
+valine:
+  enable: false # if you want use valine,please set this value is true
+  appId: # leancloud application app id
+  appKey: # leancloud application app key
+  notify: false # valine mail notify (true/false) https://github.com/xCss/Valine/wiki
+  verify: false # valine verify code (true/false)
+  pageSize: 10 # comment list page size
+  avatar: mm # gravatar style https://valine.js.org/#/avatar
+  lang: zh-cn # i18n: zh-cn/en
+  placeholder: Just go go # valine comment input placeholder(like: Please leave your footprints )
+  guest_info: nick,mail,link #valine comment header info
