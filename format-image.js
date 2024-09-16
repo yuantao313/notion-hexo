@@ -11,6 +11,9 @@ const format = async (doc, imageClient) => {
   if (!elogConfig.deploy.local.frontMatter.include.includes('cover')) {
     return doc;
   }
+  if (!doc.properties.cover) {
+    return doc;
+  }
   const cover = doc.properties.cover
   // 将 cover 字段中的 notion 图片下载到本地
   if (imageClient) {
