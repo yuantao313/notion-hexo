@@ -9,6 +9,7 @@ const elogConfig = require('./elog.config')
  * @return {Promise<DocDetail>} 返回处理后的文档对象
  */
 const format = async (doc, imageClient) => {
+  doc.body = matterMarkdownAdapter(doc);
   // 配置中无cover
   if (!elogConfig.deploy.local.frontMatter.include.includes('cover')) {
     return doc
@@ -25,7 +26,6 @@ const format = async (doc, imageClient) => {
     // cover链接替换为本地图片
     doc.properties.cover = url
   }
-  doc.body = matterMarkdownAdapter(doc);
   return doc;
 };
 
