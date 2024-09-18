@@ -41,6 +41,11 @@ jobs:
         env:
           NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
           NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
+          R2_ACCESSKEYID: ${{ secrets.R2_ACCESSKEYID }}
+          R2_SECRET_ACCESSKEY: ${{ secrets.R2_SECRET_ACCESSKEY }}
+          R2_ENDPOINT: ${{ secrets.R2_ENDPOINT }}
+          R2_HOST: ${{ secrets.R2_HOST }}
+          R2_BUCKET: ${{ secrets.R2_BUCKET }}
         run: |
           npm run sync
 
